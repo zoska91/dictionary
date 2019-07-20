@@ -8,6 +8,7 @@ const client = new mongo.MongoClient('mongodb://localhost:27017', { useNewUrlPar
 
 app.listen(3000, () => console.log('Server at http://localhost:3000'));
 
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded());
 

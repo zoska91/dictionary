@@ -28,31 +28,21 @@ function dictRoutes(app, client) {
     res.redirect('/');
   });
 
-  // app.get('/words', (req, res) => {
-  //   client.connect(err => {
-  //     //sprawdzenie czy połączenie zostało nawiązane
-  //     if (err) {
-  //       console.log('blad', err);
-  //     } else {
-  //       const db = client.db('zofiajanas');
-  //       const englishLearn = db.collection('englishLearn');
+  app.get('/words', (req, res) => {
+    client.connect(err => {
+      //sprawdzenie czy połączenie zostało nawiązane
+      if (err) {
+        console.log('blad', err);
+      } else {
+        const db = client.db('zofiajanas');
+        const englishLearn = db.collection('englishLearn');
 
-  //       englishLearn.find({}).toArray((err, data) => {
-  //         if (err) {
-  //           console.log('błędne zapytanie!');
-  //         } else {
-  //           console.log('Klienci:', data);
-  //           const words = data;
-  //           res.seteader('Content-Type', 'application/json');
-  //           res.json(words);
-  //         }
-  //       });
-
-  //       client.close();
-  //     }
-  //   });
-  //   res.redirect('/');
-  // });
+        englishLearn.find().toArray(function(err, docs) {
+          return res.json(docs);
+        });
+      }
+    });
+  });
 }
 
 module.exports = dictRoutes;
