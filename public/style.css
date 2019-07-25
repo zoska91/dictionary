@@ -111,6 +111,10 @@
   left: 140%;
 }
 
+.main__which-language {
+  margin-left: 15%;
+}
+
 .main__dict {
   height: 70%;
   width: 100%;

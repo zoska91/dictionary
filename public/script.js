@@ -1,17 +1,3 @@
-//show Word
-const showBtn = document.querySelector("[data-button='btnShow']");
-
-const showSeconsdWord = () => {
-  console.log('ok');
-  document.querySelector('.main__second-word').classList.toggle('main__second-word--active');
-  showBtn.classList.toggle('main__button--next');
-
-  if (showBtn.textContent === 'show') showBtn.textContent = 'next';
-  else showBtn.textContent = 'show';
-};
-
-showBtn.addEventListener('click', showSeconsdWord);
-
 // add new Word
 
 const addNewWordBtn = document.querySelector("[data-button='btnAddCard']");
@@ -55,27 +41,68 @@ addNewWordBtn.addEventListener('click', showNewWordCard);
 document.querySelector("[data-button='btnAddWord']").addEventListener('click', showNewWordCard);
 
 // dictionary
-// const wordsTable = document.querySelector('.words');
 
-// const btnShowWords = document.querySelector('.showWords');
+//change first word polish or english
 
-// const showWords = words => {
-//   words.forEach(word => {
-//     div = document.createElement('div');
-//     wordsTable.appendChild(div);
+let polishFirst = true;
+let polishWordDiv = '';
+let englishWordDiv = '';
+let wordsList = [];
 
-//     div.textContent = `${word.englishWord} - ${word.polishWord}`;
-//   });
-//   console.log(words[1]);
-// };
+const whichWordFirst = () => {
+  if (polishFirst) {
+    polishWordDiv = document.querySelector('.main__first-word');
+    englishWordDiv = document.querySelector('.main__second-word');
+    document.querySelector('.main__which-language').textContent = 'PL - EN';
+  } else {
+    polishWordDiv = document.querySelector('.main__second-word');
+    englishWordDiv = document.querySelector('.main__first-word');
+    document.querySelector('.main__which-language').textContent = 'EN - PL';
+  }
+};
 
-// btnShowWords.addEventListener('click', () => {
-//   fetch('/words', {
-//     method: 'GET'
-//   })
-//     .then(res => res.json())
-//     .then(words => {
-//       console.log(words);
-//       showWords(words);
-//     });
-// });
+document.querySelector('.main__change-button').addEventListener('click', () => {
+  polishFirst = !polishFirst;
+  whichWordFirst();
+});
+
+const getAllWord = () => {
+  fetch('/words', {
+    method: 'GET'
+  })
+    .then(res => res.json())
+    .then(words => {
+      console.log(words);
+      wordsList = words;
+      showWords();
+    });
+};
+
+const showWords = () => {
+  whichWordFirst();
+  const numberOfWord = Math.floor(Math.random() * wordsList.length);
+  console.log(numberOfWord);
+  polishWordDiv.textContent = wordsList[numberOfWord].polishWord;
+  englishWordDiv.textContent = wordsList[numberOfWord].englishWord;
+  console.log(wordsList[numberOfWord].englishWord);
+};
+
+getAllWord();
+
+//show next word
+const showBtn = document.querySelector("[data-button='btnShow']");
+
+const showSeconsdWord = () => {
+  console.log('ok');
+  document.querySelector('.main__second-word').classList.toggle('main__second-word--active');
+  showBtn.classList.toggle('main__button--next');
+
+  if (showBtn.textContent === 'show') {
+    showBtn.textContent = 'next';
+  } else {
+    showBtn.textContent = 'show';
+    showWords();
+  }
+};
+
+showBtn.addEventListener('click', showSeconsdWord);
