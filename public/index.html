@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Document</title>
   <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700&display=swap&subset=latin-ext"
-    rel="stylesheet">
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -16,15 +16,15 @@
     <header class="header">
       <div class="header__search">
         <input type="text" class="header__input" />
-        <button class="button button--search">
+        <button class="button button--search" data-button="btnSearchCard">
           search
         </button>
       </div>
       <div class="header__buttons">
-        <button class="button">
+        <button class="button" data-button="btnShowAllWordsCard">
           show all
         </button>
-        <button class="button" data-button="btnAddCard">
+        <button class="button" data-button="btnAddWordCard">
           add new
         </button>
       </div>
@@ -37,32 +37,32 @@
       <span class="main__which-language"> PL - EN</span>
       <div class="main__dict">
         <div class="main__word main__first-word"></div>
-        <div class="main__word main__second-word">
-
-        </div>
+        <div class="main__word main__second-word"></div>
         <button class="button main__button" data-button="btnShow">show</button>
       </div>
     </main>
 
     <div class="addWord">
-      <form method='POST' action="/submit-form" class="addWord__form">
+      <form method="POST" action="/submit-form" class="addWord__form">
         <p class="addWord__pl">
           polish
-          <input type="text" name="polishInput" placeholder="add polish word" class="addWord__input-pl addWord__input">
+          <input type="text" name="polishInput" placeholder="add polish word"
+            class="addWord__input-pl addWord__input" />
         </p>
         <p class="addWord__en">
           english
           <input type="text" name="englishInput" placeholder="add english word"
-            class="addWord__input-en addWord__input">
+            class="addWord__input-en addWord__input" />
         </p>
         <button type="submit" class="button" data-button="btnAddWord">add</button>
       </form>
     </div>
 
+    <div class="allWordsOrSearchResult">
+    </div>
   </div>
-
-  <script src="script.js"></script>
-
+  <script src="js/Cards.js"></script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>
