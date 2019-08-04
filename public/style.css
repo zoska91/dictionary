@@ -122,7 +122,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 40%;
+  height: 15vh;
   border: 2px solid black;
   display: flex;
   justify-content: center;
@@ -137,7 +137,6 @@
 
 .main__second-word {
   opacity: 0;
-  /* padding-top: 13%; */
   transition: 0.3s;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
@@ -146,18 +145,15 @@
 }
 
 .main__second-word--active {
-  margin-top: 15%;
-  height: 40%;
+  margin-top: 15vh;
   opacity: 1;
 }
 
 .main__button {
   position: absolute;
   left: 50%;
-  bottom: 20%;
+  bottom: 8vh;
   transform: translateX(-50%);
-  /*margin-bottom: 20%;
-  */
   transition: 0.3s;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
@@ -203,7 +199,7 @@
 
 .addWord__input {
   left: 0;
-  height: 35%;
+  height: 15vh;
   text-align: center;
   color: black;
 }
@@ -213,7 +209,7 @@
 }
 
 .addWord__input-en {
-  margin-top: 20%;
+  margin-top: 15vh;
 }
 
 .allWordsOrSearchResult {
