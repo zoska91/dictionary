@@ -1,68 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700&display=swap&subset=latin-ext"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Document</title>
-  <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700&display=swap&subset=latin-ext"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <form class="header__search">
+          <input type="text" class="header__input" />
+          <button class="button button--search" data-button="btnSearchCard">
+            search
+          </button>
+        </form>
+        <div class="header__buttons">
+          <button class="button" data-button="btnShowAllWordsCard">
+            show all
+          </button>
+          <button class="button" data-button="btnAddWordCard">
+            add new
+          </button>
+        </div>
+      </header>
 
-<body>
-  <div class="wrapper">
-    <header class="header">
-      <form class="header__search">
-        <input type="text" class="header__input" />
-        <button class="button button--search" data-button="btnSearchCard">
-          search
+      <main class="main">
+        <button class="main__change-button">
+          change
         </button>
-      </form>
-      <div class="header__buttons">
-        <button class="button" data-button="btnShowAllWordsCard">
-          show all
-        </button>
-        <button class="button" data-button="btnAddWordCard">
-          add new
-        </button>
+        <span class="main__which-language"> PL - EN</span>
+        <div class="main__dict">
+          <div class="main__word main__first-word"></div>
+          <div class="main__word main__second-word"></div>
+          <button class="button main__button" data-button="btnShow">show</button>
+        </div>
+      </main>
+
+      <div class="addWord">
+        <form method="POST" action="/submit-form" class="addWord__form">
+          <p class="addWord__pl">
+            polish
+            <input
+              type="text"
+              name="polishInput"
+              placeholder="add polish word"
+              class="addWord__input-pl addWord__input"
+            />
+          </p>
+          <p class="addWord__en">
+            english
+            <input
+              type="text"
+              name="englishInput"
+              placeholder="add english word"
+              class="addWord__input-en addWord__input"
+            />
+          </p>
+          <button type="submit" class="button" data-button="btnAddWord">add</button>
+        </form>
       </div>
-    </header>
 
-    <main class="main">
-      <button class="main__change-button">
-        change
-      </button>
-      <span class="main__which-language"> PL - EN</span>
-      <div class="main__dict">
-        <div class="main__word main__first-word"></div>
-        <div class="main__word main__second-word"></div>
-        <button class="button main__button" data-button="btnShow">show</button>
-      </div>
-    </main>
-
-    <div class="addWord">
-      <form method="POST" action="/submit-form" class="addWord__form">
-        <p class="addWord__pl">
-          polish
-          <input type="text" name="polishInput" placeholder="add polish word"
-            class="addWord__input-pl addWord__input" />
-        </p>
-        <p class="addWord__en">
-          english
-          <input type="text" name="englishInput" placeholder="add english word"
-            class="addWord__input-en addWord__input" />
-        </p>
-        <button type="submit" class="button" data-button="btnAddWord">add</button>
-      </form>
+      <div class="allWordsOrSearchResult"></div>
     </div>
-
-    <div class="allWordsOrSearchResult">
-    </div>
-  </div>
-  <script src="js/Cards.js"></script>
-  <script src="js/script.js"></script>
-</body>
-
+    <script src="js/Cards.js"></script>
+    <script src="js/script.js"></script>
+  </body>
 </html>
