@@ -3,28 +3,32 @@ const mainCard = document.querySelector('.main');
 const addWordCard = document.querySelector('.addWord');
 const allWordsOrSearchResult = document.querySelector('.allWordsOrSearchResult');
 let activeCard = mainCard;
+let textInButton = '';
 
 //buttons
 
 const btnAddNewWordCard = document.querySelector("[data-button='btnAddWordCard']");
 const btnShowAllWordsCard = document.querySelector("[data-button='btnShowAllWordsCard']");
-const btnSearchCard = document.querySelector("[data-button='btnSearchCard']");
 
-const toggleCard = openCard => {
+const toggleCard = (openCard, btn) => {
   if (activeCard === openCard) {
     const changeCards = new Card(openCard, mainCard);
     changeCards.toggleCard();
+    btn.style.borderColor = 'white';
+    btn.textContent = textInButton;
     activeCard = mainCard;
   } else {
+    textInButton = btn.textContent;
     const changeCards = new Card(activeCard, openCard);
     changeCards.toggleCard();
+    btn.style.borderColor = 'rgb(192, 15, 15)';
+    btn.textContent = 'go back';
     activeCard = openCard;
   }
 };
 
-btnAddNewWordCard.addEventListener('click', () => toggleCard(addWordCard));
-btnSearchCard.addEventListener('click', () => toggleCard(allWordsOrSearchResult));
-btnShowAllWordsCard.addEventListener('click', () => toggleCard(allWordsOrSearchResult));
+btnAddNewWordCard.addEventListener('click', () => toggleCard(addWordCard, btnAddNewWordCard));
+btnShowAllWordsCard.addEventListener('click', () => toggleCard(allWordsOrSearchResult, btnShowAllWordsCard));
 
 // dictionary
 
@@ -92,11 +96,33 @@ const showSeconsdWord = () => {
 showBtn.addEventListener('click', showSeconsdWord);
 
 //show all words
-btnShowAllWordsCard.addEventListener('click', () => {
-  wordsList.forEach(word => {
+const wordsInList = words => {
+  allWordsOrSearchResult.innerHTML = '';
+  console.log(words);
+  words.forEach(word => {
     const divWord = document.createElement('div');
     divWord.classList.add('oneWord');
     divWord.textContent = `${word.polishWord} - ${word.englishWord}`;
     allWordsOrSearchResult.appendChild(divWord);
   });
+};
+
+btnShowAllWordsCard.addEventListener('click', () => {
+  wordsInList(wordsList);
+});
+
+//search
+
+const searchInput = document.querySelector('.header__input');
+const searchForm = document.querySelector('.header__search');
+
+searchForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const searchValue = searchInput.value;
+  let result = wordsList.filter(
+    word => word.polishWord.includes(searchValue) || word.englishWord.includes(searchValue)
+  );
+  wordsInList(result);
+  const changeCards = new Card(activeCard, allWordsOrSearchResult);
+  changeCards.toggleCard();
 });

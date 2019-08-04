@@ -5,9 +5,7 @@
   font-family: 'Titillium Web', sans-serif;
 }
 
-:root {
-  --borderRadius: 30px;
-}
+
 
 .wrapper {
   height: 100vh;
@@ -15,8 +13,9 @@
   padding: 15% 10%;
   background-size: cover;
   padding: relative;
-  background-color: rgb(238, 250, 255);
-
+  background-color: #1f1f1f;
+  color: white;
+  font-size: 1rem;
 }
 
 .header {
@@ -35,24 +34,20 @@
 .header__input {
   width: 100%;
   height: 8vh;
-  border-radius: var(--borderRadius);
   padding-left: 10%;
-  border: 2px solid black;
-  box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.75);
+  border: 2px solid rgb(100, 0, 0);
 }
 
 .button,
 .oneWord {
   height: 8vh;
   width: 35vw;
-  border-radius: var(--borderRadius);
-  background-color: transparent;
-  border: 2px solid rgb(0, 0, 73);
-  box-shadow: 0px 0px 2px 2px gray;
+  background-color: #141414;
+  color: white;
+  border: 1px solid white;
   cursor: pointer;
-  transition: box-shadow 0.2s, transform 0.2s;
   z-index: 1;
-  background-color: rgba(255, 255, 255, .7)
+  font-size: 1rem;
 }
 
 .button--search {
@@ -62,7 +57,6 @@
 }
 
 .button:hover {
-  box-shadow: 0px 2px 4px 4px gray;
   transform: scale(1.01);
 }
 
@@ -87,6 +81,8 @@
   border: none;
   position: relative;
   margin: 10% 0;
+  color: white;
+  font-size: 1rem
 }
 
 .main__change-button::before,
@@ -96,18 +92,18 @@
   width: 0;
   height: 0;
   position: absolute;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
+  border-left: .5rem solid transparent;
+  border-right: .5rem solid transparent;
 }
 
 .main__change-button::before {
-  border-bottom: 15px solid black;
+  border-bottom: 1rem solid white;
   top: 0;
   left: 110%;
 }
 
 .main__change-button::after {
-  border-top: 15px solid rgb(192, 15, 15);
+  border-top: 1rem solid rgb(192, 15, 15);
   top: 0;
   left: 140%;
 }
@@ -130,12 +126,11 @@
   width: 100%;
   height: 40%;
   border: 2px solid black;
-  border-radius: var(--borderRadius);
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.75);
+  color: black;
 }
 
 .main__first-word {
@@ -144,7 +139,7 @@
 
 .main__second-word {
   opacity: 0;
-  padding-top: 15%;
+  padding-top: 13%;
   transition: .3s;
   -webkit-transition: .3s;
   -moz-transition: .3s;
@@ -161,17 +156,25 @@
 .main__button {
   position: absolute;
   left: 50%;
+  bottom: 20%;
   transform: translateX(-50%);
-  margin-top: 40%;
+  /*margin-bottom: 20%;
+  */
   transition: .3s;
   -webkit-transition: .3s;
   -moz-transition: .3s;
   -ms-transition: .3s;
   -o-transition: .3s;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
 }
 
 .main__button--next {
-  margin-top: 80%;
+  /* margin-bottom: 10%; */
+  bottom: 0;
+
 }
 
 .main__button:hover {
@@ -206,6 +209,7 @@
   left: 0;
   height: 35%;
   text-align: center;
+  color: black;
 }
 
 .addWord__input-pl {
@@ -227,12 +231,11 @@
 
 .allWordsOrSearchResult::-webkit-scrollbar {
   background-color: transparent;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
   width: 7px;
 }
 
 .allWordsOrSearchResult::-webkit-scrollbar-button {
-  background-color: rgba(4, 5, 65, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .allWordsOrSearchResult::-webkit-scrollbar-thumb {
@@ -242,8 +245,37 @@
 
 .oneWord {
   height: 5.5vh;
-  width: 70vw;
+  width: 70%;
   z-index: 0;
   text-align: center;
   margin-top: 2vh;
+}
+
+
+@media(min-height: 640px) {
+  html {
+    font-size: 18px
+  }
+}
+
+@media(min-height: 996px) {
+  html {
+    font-size: 28px
+  }
+
+  .wrapper {
+    padding: 20% 12%;
+  }
+}
+
+@media(orientation: landscape) {
+
+  .wrapper {
+    padding: 5% 25%;
+  }
+
+  .button {
+    width: 20vw;
+
+  }
 }

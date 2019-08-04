@@ -14,9 +14,3 @@ class Card {
     }, 200);
   }
 }
-
-// const mainMenuCard = new Card(mainCard, addWordCard);
-
-// document.querySelector("[data-button='btnAddCard']").addEventListener('click', () => {
-//   mainMenuCard.toggleCard();
-// });
